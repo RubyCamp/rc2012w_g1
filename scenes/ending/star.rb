@@ -1,0 +1,41 @@
+#coding:shift_jis
+
+class PictureStar
+	attr_accessor :x,:y
+	FontName = '‚l‚r ƒSƒVƒbƒN'
+	FontSize = 55
+	
+	def initialize(snum)
+# •`‚­‚×‚«¯‚Ì”‚ğƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚É•Û
+        @num_of_stars = snum
+	end
+	
+	def draw
+# “à•”‚ÅŠÇ—‚µ‚Ä‚¢‚éÀ•W‚É¯‚ğ•`‚­
+		font = Font.new(FontSize,FontName)
+		@image = Image.new(font.getWidth("š"), font.size)
+                @image2 = Image.new(font.getWidth("™"), font.size)
+     
+                color = [255,255,0]
+		@image.drawFont(0,0,"š",font,color)
+                @image2.drawFont(0,0,"™",font,color)
+		# 0...5‚ÅŒJ•Ô‚µˆÈ‰º‚ğ•`‚­
+                (0 ... 5).each do|i|
+                  x = 470+(i * @image.width)
+                  y = 250
+		  if i < @num_of_stars
+                        Window.draw(x,y,@image)
+		  else
+                        Window.draw(x,y,@image2)
+		  end
+         	end
+		
+	end
+end
+
+
+
+#require 'dxruby'
+#Window.loop do
+#  PictureStar.new(3).draw(0, 20)
+#end
